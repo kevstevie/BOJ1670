@@ -24,7 +24,7 @@ class Main {
     static long calculateDp(int n) {
         long result = 0L;
         for (int i = 2; i <= n; i += 2) {
-            result += dp[i - 2] * dp[n - i];
+            result += (dp[i - 2] * dp[n - i]) % 987654321L;
         }
         return result % 987654321L;
     }
