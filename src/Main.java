@@ -5,16 +5,27 @@ class Main {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
-        long[] dp = new long[10001];
+        dp = new long[10001];
 
-        dp[2] = 1;
-        dp[4] = 2;
+        dp[0] = 1L;
+        dp[2] = 1L;
+        dp[4] = 2L;
 
         for (int i = 6; i < 10001; i += 2){
-            dp[i] = ((dp[i - 2] * 2) % 987654321 + addition(dp[i]) % 987654321) % 987654321;
+            dp[i] = calculateDp(i);
         }
+        dp[0] = 0L;
 
         System.out.println(dp[N]);
+    }
 
+    static long[] dp;
+
+    static long calculateDp(int n) {
+        long result = 0L;
+        for (int i = 2; i <= n; i += 2) {
+            result += dp[i - 2] * dp[n - i];
+        }
+        return result % 987654321L;
     }
 }
