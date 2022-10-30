@@ -13,7 +13,8 @@ class Main {
         for (int i = 6; i < 10001; i += 2){
             dp[i] = ((dp[i - 2] * 2) % 987654321 + addition(dp[i]) % 987654321) % 987654321;
         }
-        
+
+        System.out.println(dp[N]);
 
     }
 }
